@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+
+    <title>Understanding Privacy Awareness in Android App Descriptions Using Deep Learning</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqcloud/1.0.4/jqcloud.css" rel="stylesheet">
+    <link href="https://mistic100.github.io/jQCloud/assets/css/style.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div id="minitoast">
+    <div id="minitoast_text">Toast</div>
+</div>
+
+
+<div class="templates">
+
+    <li class="list-group-item list-group-item-action template_permission_list">
+        <div>
+            <small class="float-right badge badge-pill"></small>
+            <h6 class="my-0">
+                <i class="material-icons"></i>
+                <a href="javascript:;"></a>
+            </h6>
+        </div>
+    </li>
+
+</div>
+
+
+<header>
+
+    <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="col-sm-4" id="template_app_list">
+                <div class="card m-0 mr-1 mb-1">
+                    <div class="card-body p-0 m-0">
+                        <div class="l-app-title">
+                            <a style="cursor:pointer" class="btn_permissions"><span class="title p-1 align-middle"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-3" id="apps_list"></div>
+        </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container d-flex justify-content-between">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <strong>Understanding Privacy Awareness in Android App Descriptions Using Deep Learning (CODASPY '20)</strong>
+            </a>
+            <button aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation"
+                    class="navbar-toggler" data-target="#navbarHeader" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<div class="container" id="main_content_container">
+
+    <div class="row">
+        <div class="col-md-2 py-4" id="app_icon_col">
+            <img alt="" class="d-block mx-auto mb-4" height="100" id="app_icon" src="" width="100">
+        </div>
+        <div class="col-md-10 py-4">
+            <h1 id="app_name"></h1>
+            <div>
+                <strong>Package</strong> <span id="package"></span>
+                <a href="#" id="store_link" target="_blank">
+                    <i class="material-icons">&#xe89e;</i>
+                </a>
+            </div>
+            <div>
+                <strong>Version</strong> <span id="version"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="panel_t2p">
+        <div class="col-md-4 order-md-2 mb-4">
+            <ul class="list-group mb-3" id="permissions"></ul>
+            <div class="card mt-1">
+                <div class="card-body small">
+                    <p>
+                        <strong>Percentage:</strong> Prediction that the app requires a certain permission, based on the
+                        description text.<br/>
+                        <em>Note</em>: The system does not only look at single words, but especially their combination.
+                    </p>
+                    <p>
+                        <span class="badge badge-success">&nbsp;&nbsp;</span> correct prediction<br/>
+                        <span class="badge badge-warning">&nbsp;&nbsp;</span> vague prediction<br/>
+                        <span class="badge badge-danger">&nbsp;&nbsp;</span> wrong prediction
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 order-md-1">
+            <div class="card">
+                <div class="card-body">
+                    <h6>Actual Description</h6>
+                    <div id="text_container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+
+    </footer>
+</div>
+
+<div class="text-center" id="main_loading">
+    <div class="spinner-grow" role="status">
+        <span class="sr-only">Loading ...</span>
+    </div>
+    <p>Loading ...</p>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script crossorigin="anonymous"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqcloud/1.0.4/jqcloud-1.0.4.min.js"></script>
+<script src="https://www.jqueryscript.net/demo/jQuery-Bootstrap-4-Typeahead-Plugin/bootstrap3-typeahead.js"></script>
+<script src="scripts.js"></script>
+</body>
+</html>
